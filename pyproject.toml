@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "customer-data-platform"
+version = "0.1.0"
+description = "Customer Data Platform: multi-source ingestion, identity resolution and stitching (deterministic + probabilistic with merge/split audit), unified profiles with consent and privacy enforcement, segment builder, consent-gated activation, and data quality checks."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Manas Mohanty" }]
+keywords = ["data-engineering", "cdp", "identity-resolution", "consent", "segmentation", "activation"]
+dependencies = []
+
+[project.optional-dependencies]
+api = ["fastapi>=0.110", "uvicorn>=0.29", "pydantic>=2.6"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+customer-data-platform = "customer_data_platform.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
